@@ -1,8 +1,8 @@
-import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
 
 const style = {
   position: "absolute",
@@ -16,13 +16,9 @@ const style = {
   p: 4,
 };
 
-const ModalCodigo = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const ModalCodigo = ({ open, handleClose }) => {
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -30,12 +26,30 @@ const ModalCodigo = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+          <Typography
+            variant="h6"
+            component="h2"
+            sx={{ marginBottom: 2, textAlign: "center" }}
+          >
+            Ingresa el Código de Verificación
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <form>
+            <TextField
+              id="verification-code"
+              label="Código de Verificación"
+              variant="outlined"
+              fullWidth
+              sx={{ marginBottom: 2 }}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              sx={{ marginX: "auto" }}
+            >
+              Enviar
+            </Button>
+          </form>
         </Box>
       </Modal>
     </>

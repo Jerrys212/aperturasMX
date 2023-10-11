@@ -4,8 +4,13 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import ModalCodigo from "../components/ModalCodigo";
+import { useState } from "react";
 
 const Login = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Container sx={{ marginTop: "50px" }}>
       <Box
@@ -56,6 +61,7 @@ const Login = () => {
           }}
         >
           <Button
+            onClick={handleOpen}
             variant="contained"
             sx={{
               backgroundColor: "#001952",
@@ -67,7 +73,7 @@ const Login = () => {
         </div>
       </Box>
 
-      <ModalCodigo />
+      <ModalCodigo open={open} setOpen={setOpen} handleClose={handleClose} />
     </Container>
   );
 };
