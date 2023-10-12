@@ -12,6 +12,8 @@ import Grid from "@mui/material/Grid";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import { Paper } from "@mui/material";
+import Snack from "../components/Snack";
 
 const Formulario = () => {
   const [datosGenerales, setDatosGenerales] = useState({
@@ -46,6 +48,8 @@ const Formulario = () => {
     });
   };
 
+  const [snack, setSnack] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -75,180 +79,195 @@ const Formulario = () => {
 
   return (
     <Box component={"form"} onSubmit={handleSubmit}>
-      <Accordion defaultExpanded={true}>
-        <AccordionSummary expandIcon={<ExpandMore />}>
-          <Typography variant="h6">Datos Generales</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <TextField
-                label="Nombre"
-                name="nombre"
-                value={datosGenerales.nombre}
-                onChange={handleChangeDatosGenerales}
-                fullWidth
-                sx={inputSX}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Apellido Materno"
-                name="apellidoM"
-                value={datosGenerales.apellidoM}
-                onChange={handleChangeDatosGenerales}
-                fullWidth
-                sx={inputSX}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Apellido Paterno"
-                name="apellidoP"
-                value={datosGenerales.apellidoP}
-                onChange={handleChangeDatosGenerales}
-                fullWidth
-                sx={inputSX}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Correo"
-                name="correo"
-                value={datosGenerales.correo}
-                onChange={handleChangeDatosGenerales}
-                fullWidth
-                sx={inputSX}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Teléfono"
-                name="telefono"
-                value={datosGenerales.telefono}
-                onChange={handleChangeDatosGenerales}
-                fullWidth
-                sx={inputSX}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <FormControl fullWidth sx={inputSX}>
-                <InputLabel>Tienda</InputLabel>
-                <Select
-                  name="tienda"
-                  value={datosGenerales.tienda}
+      <Paper elevation={3} sx={{ marginTop: "20px" }}>
+        <Accordion defaultExpanded={true}>
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            <Typography variant="h6">Datos Generales</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <TextField
+                  label="Nombre"
+                  name="nombre"
+                  value={datosGenerales.nombre}
                   onChange={handleChangeDatosGenerales}
-                >
-                  <MenuItem value="tienda1">Tienda 1</MenuItem>
-                  <MenuItem value="tienda2">Tienda 2</MenuItem>
-                  <MenuItem value="tienda3">Tienda 3</MenuItem>
-                </Select>
-              </FormControl>
+                  fullWidth
+                  sx={inputSX}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Apellido Materno"
+                  name="apellidoM"
+                  value={datosGenerales.apellidoM}
+                  onChange={handleChangeDatosGenerales}
+                  fullWidth
+                  sx={inputSX}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Apellido Paterno"
+                  name="apellidoP"
+                  value={datosGenerales.apellidoP}
+                  onChange={handleChangeDatosGenerales}
+                  fullWidth
+                  sx={inputSX}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Correo"
+                  name="correo"
+                  value={datosGenerales.correo}
+                  onChange={handleChangeDatosGenerales}
+                  fullWidth
+                  sx={inputSX}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Teléfono"
+                  name="telefono"
+                  value={datosGenerales.telefono}
+                  onChange={handleChangeDatosGenerales}
+                  fullWidth
+                  sx={inputSX}
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth sx={inputSX}>
+                  <InputLabel>Tienda</InputLabel>
+                  <Select
+                    name="tienda"
+                    value={datosGenerales.tienda}
+                    onChange={handleChangeDatosGenerales}
+                  >
+                    <MenuItem value="tienda1">Tienda 1</MenuItem>
+                    <MenuItem value="tienda2">Tienda 2</MenuItem>
+                    <MenuItem value="tienda3">Tienda 3</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
             </Grid>
-          </Grid>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMore />}>
-          <Typography variant="h6">Dirección</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <TextField
-                label="Código Postal"
-                name="cp"
-                value={direccion.cp}
-                sx={inputSX}
-                onChange={handleChangeDireccion}
-                fullWidth
-              />
+          </AccordionDetails>
+        </Accordion>
+      </Paper>
+      <Paper elevation={3} sx={{ marginTop: "20px" }}>
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            <Typography variant="h6">Dirección</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <TextField
+                  label="Código Postal"
+                  name="cp"
+                  value={direccion.cp}
+                  sx={inputSX}
+                  onChange={handleChangeDireccion}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Calle"
+                  name="calle"
+                  value={direccion.calle}
+                  sx={inputSX}
+                  onChange={handleChangeDireccion}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Ciudad"
+                  name="ciudad"
+                  value={direccion.ciudad}
+                  sx={inputSX}
+                  onChange={handleChangeDireccion}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Estado"
+                  name="estado"
+                  value={direccion.estado}
+                  sx={inputSX}
+                  onChange={handleChangeDireccion}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Municipio"
+                  name="municipio"
+                  value={direccion.municipio}
+                  sx={inputSX}
+                  onChange={handleChangeDireccion}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  label="Colonia"
+                  name="colonia"
+                  value={direccion.colonia}
+                  sx={inputSX}
+                  onChange={handleChangeDireccion}
+                  fullWidth
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Calle"
-                name="calle"
-                value={direccion.calle}
-                sx={inputSX}
-                onChange={handleChangeDireccion}
-                fullWidth
-              />
+          </AccordionDetails>
+        </Accordion>
+      </Paper>
+      <Paper elevation={3} sx={{ marginTop: "20px" }}>
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            <Typography variant="h6">¿Cuentas Con Id Club Petco?</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  label="Id Club Petco"
+                  name="idclubpetco"
+                  value={datosGenerales.nombre}
+                  onChange={handleChangeDatosGenerales}
+                  fullWidth
+                  sx={inputSX}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Ciudad"
-                name="ciudad"
-                value={direccion.ciudad}
-                sx={inputSX}
-                onChange={handleChangeDireccion}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Estado"
-                name="estado"
-                value={direccion.estado}
-                sx={inputSX}
-                onChange={handleChangeDireccion}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Municipio"
-                name="municipio"
-                value={direccion.municipio}
-                sx={inputSX}
-                onChange={handleChangeDireccion}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                label="Colonia"
-                name="colonia"
-                value={direccion.colonia}
-                sx={inputSX}
-                onChange={handleChangeDireccion}
-                fullWidth
-              />
-            </Grid>
-          </Grid>
-        </AccordionDetails>
-      </Accordion>{" "}
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMore />}>
-          <Typography variant="h6">¿Cuentas Con Id?</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                label="Nombre"
-                name="nombre"
-                value={datosGenerales.nombre}
-                onChange={handleChangeDatosGenerales}
-                fullWidth
-              />
-            </Grid>
-          </Grid>
-        </AccordionDetails>
-      </Accordion>
+          </AccordionDetails>
+        </Accordion>
+      </Paper>
       <Box
         sx={{ marginTop: "20px", display: "flex", justifyContent: "center" }}
       >
         <Button
           variant="contained"
           color="primary"
+          size="large"
           sx={{
             backgroundColor: "#001952",
             "&:hover": { backgroundColor: "#001952" },
+          }}
+          onClick={() => {
+            setSnack(true);
+            setTimeout(() => {
+              setSnack(false);
+            }, 2000);
           }}
         >
           Guardar
         </Button>
       </Box>
+      <Snack snack={snack} />
     </Box>
   );
 };

@@ -5,11 +5,15 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import ModalCodigo from "../components/ModalCodigo";
 import { useState } from "react";
+import Spinner from "../components/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [open, setOpen] = useState(false);
+  const [spinner, setSpinner] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
+  const navigate = useNavigate();
 
   return (
     <Container sx={{ marginTop: "50px" }}>
@@ -44,16 +48,7 @@ const Login = () => {
             marginBottom: "12px",
           }}
         />
-        <TextField
-          id="filled-password-input"
-          label="Password"
-          type="password"
-          fullWidth
-          variant="outlined"
-          sx={{
-            marginBottom: "12px",
-          }}
-        />
+
         <div
           style={{
             display: "flex",
@@ -73,7 +68,19 @@ const Login = () => {
         </div>
       </Box>
 
-      <ModalCodigo open={open} setOpen={setOpen} handleClose={handleClose} />
+      <ModalCodigo
+        open={open}
+        cerrar={() => setOpen(false)}
+        handleClose={() => {
+          setOpen(false);
+          setSpinner(true);
+          setTimeout(() => {
+            setSpinner(false);
+            navigate("/admin");
+          }, 2000);
+        }}
+      />
+      <Spinner spinnerToggle={spinner} />
     </Container>
   );
 };
